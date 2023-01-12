@@ -16,11 +16,11 @@ import java.util.List;
 public class TextResponse {
 
     @JsonProperty("slowo")
-    String word;
+    private String word;
 
     @JsonProperty("powtorzenia")
-    Integer NumberOfOccurrences;
+    private Integer NumberOfOccurrences;
 
     @JsonProperty("pozycje")
-    List<Integer> positions;
+    private List<Integer> positions;
 }
