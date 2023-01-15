@@ -1,5 +1,7 @@
 package pl.dominik.textanalyzer.controller;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -17,11 +19,14 @@ import java.util.List;
 
 @RestController
 @RequestMapping("api/texts")
+
+@Tag(name = "text", description = "Text API")
 public class TextController {
 
     @Autowired
     private TextService textService;
 
+    @Operation(summary = "Analyze the text")
     @PostMapping("/analyze")
     public ResponseEntity<List<TextResponse>> analyzeText(@Valid @RequestBody TextRequest textRequest) {
         List<TextResponse> analyzedWords = textService.getAnalyzedWords(textRequest.getText());
